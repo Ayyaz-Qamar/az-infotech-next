@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a5cd6"/><stop offset="1" stop-color="#021033"/></linearGradient></defs>
+<rect width="800" height="500" fill="url(#g)"/><rect x="50" y="50" width="700" height="400" rx="18" fill="#071433" stroke="#ffffff22"/>
+<rect x="50" y="50" width="700" height="44" rx="18" fill="#0b1d4a"/><circle cx="78" cy="72" r="6" fill="#f87171"/><circle cx="98" cy="72" r="6" fill="#fbbf24"/><circle cx="118" cy="72" r="6" fill="#4ade80"/>
+<text x="90" y="200" font-family="Arial" font-weight="700" font-size="34" fill="#fff">AI Assessment</text>
+<rect x="90" y="225" width="260" height="10" rx="5" fill="#ffffff33"/><rect x="90" y="250" width="200" height="10" rx="5" fill="#ffffff22"/>
+<rect x="90" y="300" width="130" height="42" rx="21" fill="#00c8ff"/>
+<rect x="470" y="300" width="40" height="50" rx="6" fill="#0a5cd6"/><rect x="530" y="250" width="40" height="100" rx="6" fill="#3b9bff"/><rect x="590" y="200" width="40" height="150" rx="6" fill="#00c8ff"/><rect x="650" y="150" width="40" height="200" rx="6" fill="#7df3ff"/></svg>
