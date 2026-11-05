@@ -1,13 +1,21 @@
-import { promises as fs } from 'fs';
-import path from 'path';
 export async function POST(req) {
-  const b = await req.json();
-  if (!b.name || !b.email || !b.message) return Response.json({ ok: false }, { status: 400 });
-  const f = path.join(process.cwd(), 'data', 'inquiries.json');
-  await fs.mkdir(path.dirname(f), { recursive: true });
-  let a = [];
-  try { a = JSON.parse(await fs.readFile(f, 'utf8')); } catch {}
-  a.push({ ...b, at: new Date().toISOString() });
-  await fs.writeFile(f, JSON.stringify(a, null, 2));
-  return Response.json({ ok: true });
+  const { name, email, message } = await req.json();
+  if (!name || !email || !message) return Response.json({ ok: false }, { status: 400 });
+
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return Response.json({ ok: false }, { status: 500 });
+
+  const r = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: 'AZ Info Tech Website <onboarding@resend.dev>',
+      to: ['infotechsolutionsaz@gmail.com'],
+      reply_to: email,
+      subject: `New inquiry from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+    }),
+  });
+
+  return Response.json({ ok: r.ok }, { status: r.ok ? 200 : 502 });
 }
